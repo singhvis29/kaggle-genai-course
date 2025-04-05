@@ -55,6 +55,13 @@ This repository is created for notebooks and material used in the the Kaggle 5-d
 7. To search the Chroma database, we call the query method. Note that we also switch to the retrieval_query mode of embedding generation. We retreive the relevant passage wrt our query from the db
 8. We finally assemble a generation prompt to have the Gemini API generate a final answer.
 
-
+#### Notebook 2 - Embeddings and similarity scores
+1. Gemini supports 4 models for embedding task -
+ * models/embedding-001
+ * models/text-embedding-004
+ * models/gemini-embedding-exp-03-07
+ * models/gemini-embedding-exp
+2. We embed the list of texts using the models/text-embedding-004 model
+3. A similarity score of two embedding vectors can be obtained by calculating their inner product. If $\mathbf{u}$ is the first embedding vector, and $\mathbf{v}$ the second, this is $\mathbf{u}^T \mathbf{v}$. As the API provides embedding vectors that are normalised to unit length, this is also the cosine similarity.
 
 
