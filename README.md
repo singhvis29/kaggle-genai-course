@@ -28,3 +28,15 @@ This repository is created for notebooks and material used in the the Kaggle 5-d
 
 
 #### Notebook 2 - Evaluation and Structures Response
+1. To evaluate an LLM response, we can evaluate a number of aspects, like how well the model followed the prompt ("instruction following"), whether it included relevant data in the prompt ("groundedness"), how easy the text is to read ("fluency"), or other factors like "verbosity" or "quality".
+2. In this notebook, we learn different types of LLM evaluation techniques
+3. In this notebook we evaluate the summarization task of an LLM, we can perform a verbose evaluation or a structure rating based evaluation.
+4. We also look at performing pointwise evaluation for QA task
+5. We generated answers for questions wrt the document (context) with different kinds of instructions - terse, moderated, and cited and evaluation. THe response can be evaluated using verbose evaluation or structured evaluation
+6. We also look at technique to perform pairwise evaluation to perform comparison of two responses and evaluate which is a better response using an LLM (which uses the evaluation criteria). This technique has various uses in ranking and sorting algorithms.
+7. We develop a logic to compare different prompts against each other and rank them
+8. Challenges in using LLM as a prompt - LLM struggle in certain tasks such as counting numbers of characters in text so an LLM evaluator will also struggle in that kind of task
+9. Improving confidence - in order to improve the evaluator we can pit the LLMs against each other and take the best one
+
+
+## Day-2
