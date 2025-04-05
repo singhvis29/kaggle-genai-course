@@ -40,3 +40,21 @@ This repository is created for notebooks and material used in the the Kaggle 5-d
 
 
 ## Day-2
+
+### Whitepaper Summary
+
+### Notebook Summary
+
+#### Notebook 1 - Document RAG with Q&A
+1. RAG is used to mitigate the two drawbacks of LLM i.e.- 1) that they only "know" the information that they were trained on, and 2) that they have limited input context windows.
+2. Indexing happens ahead of time, and allows you to quickly look up relevant information at query-time. When a query comes in, you retrieve relevant documents, combine them with your instructions and the user's query, and have the LLM generate a tailored answer in natural language using the supplied information.
+3. In this notebook we use the Gemini API to create a vector database, retrieve answers to questions from the database and generate a final answer. We use Chroma, an open-source vector database.
+4. We use Gemini client.models.embed_content API to embed the input documents. The embedding used are 'models/text-embedding-004'
+5. We create a function - GeminiEmbeddingFunction to generate embeddings for documents. The function can be used to generate embeddings for documents or queries
+6. We create a Chroma database client that uses the GeminiEmbeddingFunction and populate the database with the documents
+7. To search the Chroma database, we call the query method. Note that we also switch to the retrieval_query mode of embedding generation. We retreive the relevant passage wrt our query from the db
+8. We finally assemble a generation prompt to have the Gemini API generate a final answer.
+
+
+
+
