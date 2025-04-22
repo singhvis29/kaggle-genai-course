@@ -92,7 +92,9 @@ This repository is created for notebooks and material used in the the Kaggle 5-d
 5. Each node in the graph operates on the state object. The state (a Python dictionary) is passed as a parameter into the node (a function) and the new state is returned. For the chatbot node, the state is updated by adding the new conversation message.
 6. We introduce a human node in the graph. The human node is used to have back and forth conversation with the chatbot. This is done by adding a **conditional node** to the graph which checks the logic to end a conversation or continue back to chatbot.
 7. We can add tools to the LangGraph, this is done by adding conditional nodes which will use tools to transition from one state to another. In a LangGraph app, you can annotate Python functions as tools by applying the `@tools` annotation. The tools are also bound to the llm object so that the underlying model knows they exist.
+8. Instead of hard-coding a menu, we can create a more dynamic and could respond to fluctuating stock levels, we will put the menu into a custom tool. The tools are wrapped in `ToolNode`. that handles calling the tool and passing the response as a message through the graph. The tools are also bound to the llm object so that the underlying model knows they exist. As you now have a different llm object to invoke, you need to update the chatbot node so that it is aware of the tools.
+9. Next we create an order processing node and add tools to handle the order. The final graph looks as follows - 
 
-![image](https://github.com/user-attachments/assets/39b506db-5341-48a5-8a71-afc1d6408f54)
-8. Instead of hard-coding a menu, we can create a more dynamic and could respond to fluctuating stock levels, we will put the menu into a custom tool. 
-9. 
+![image](https://github.com/user-attachments/assets/1796a855-0fda-480e-99df-860e241d044d)
+
+10. This way we can define nodes and edges of the graph to build our app. The LLM responses are used to navigate throughout the nodes to perform functions of the app and terminate based on user defined conditions.
