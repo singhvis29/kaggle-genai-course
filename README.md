@@ -81,7 +81,33 @@ This repository is created for notebooks and material used in the the Kaggle 5-d
 
 ### Whitepaper Summary
 
-#### Notebook 1 - 
+#### Notebook 1 - Function Calling with Gemini API
+
+1. In this notebook, we start the example by creating a SQLite database and adding some synthetic data which we can query.
+2. Gemini API can interact with external functions by two approaches, which in this case are used to access and query a database -
+ * Defining an OpenAPI Schema: This involves creating a formal schema that describes the available functions and their parameters using the OpenAPI specification. This schema is then passed directly to the Gemini model.
+ * Defining Python Functions: This approach involves writing regular Python functions and allowing the SDK to automatically generate the schema from them. This is the approach taken in this notebook.
+3. When using Python functions for function calling, type annotations and accurate docstrings are crucial. This is because:
+ * Type Annotations: Provide information about the expected data types of function parameters and return values.
+ * Docstrings: Serve as detailed descriptions of what the function does, its parameters, and what it returns.
+The Gemini model relies on these annotations and docstrings as its sole source of information about the functions. It cannot directly inspect the function's code to understand its behavior. Therefore, the docstrings effectively act as the interface between the model and your functions.
+4. The code in the notebook defines three essential functions to interact with the database:
+ * list_tables(): Retrieves the names of all tables in the database.
+ * describe_table(table_name): Provides the schema (column names and types) of a given table.
+ * execute_query(sql): Executes an SQL query and returns the results.
+By providing these functions to the Gemini model (LLM), it gains the ability to:
+ * Understand the Database Structure: Using list_tables and describe_table, the model can learn what tables and columns are available.
+ * Query the Database: With execute_query, the model can run SQL queries to retrieve specific data.
+5. The goal of this setup is to empower the Gemini model to act as a database interface for the user. Just like a human user would interact with a database (e.g., using SQL commands), the model is equipped with the necessary tools to understand and retrieve information from the database. This enables a more interactive and dynamic conversation where the model can:
+ * Answer user questions that require database lookups.
+ * Perform actions on the database based on user requests.
+6. Function calls are implemented to obtain LLM response for a user query from the database. Function calling works by adding specific messages to a chat session. When function schemas are defined and made available to the model and a conversation is started, instead of returning a text response, the model may return a function_call instead. When this happens, the client must respond with a function_response, indicating the result of the call.
+7. The function calling interaction normally happens manually, allowing you, the client, to validate and initiate the call. However the Python SDK also supports automatic function calling, where the supplied functions will be automatically invoked.
+8. In this jupyter NB, we implement automatic function calling where we attach all the user defined function to LLM. This enables the client to automatically invoke the function and respond to user queries
+9. Gemini 2.0 is quite powerful and can answer question that involce multipe steps - For e.g. - "What products should salesperson Alice focus on to round out her portfolio? Explain why."
+10. Gemini 2.0 has the ability to compose user-provided function calls together while generating code. This means that the model is able to take the available tools, generate code that uses it, and execute it all.
+11. 
+
 
 #### Notebook 2 - Building an Agent with LangGraph
 
