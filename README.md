@@ -106,7 +106,9 @@ By providing these functions to the Gemini model (LLM), it gains the ability to:
 8. In this jupyter NB, we implement automatic function calling where we attach all the user defined function to LLM. This enables the client to automatically invoke the function and respond to user queries
 9. Gemini 2.0 is quite powerful and can answer question that involce multipe steps - For e.g. - "What products should salesperson Alice focus on to round out her portfolio? Explain why."
 10. Gemini 2.0 has the ability to compose user-provided function calls together while generating code. This means that the model is able to take the available tools, generate code that uses it, and execute it all.
-11. 
+11. We define an asynchronous function called `handle_response`. Its primary role is to manage the stream of responses coming from a large language model (LLM) like Gemini, especially when the model uses external tools or functions. It handles displaying the model's output and managing any function calls that the model might make.
+12. We then set up a connection to the Gemini Live API, provide instructions and a tool (execute_query) to the model, start a chat session, and send a message requesting the model to generate and insert data into the database. The `handle_response` function is then used to process the model's response and handle any interactions with the provided tool.
+13. Finally we are able to use the live connection to generate a code from data in sql database and plot and seaborn plot.
 
 
 #### Notebook 2 - Building an Agent with LangGraph
