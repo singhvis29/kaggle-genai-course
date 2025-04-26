@@ -81,6 +81,8 @@ This repository is created for notebooks and material used in the the Kaggle 5-d
 
 ### Whitepaper Summary
 
+### Notebook Summary
+
 #### Notebook 1 - Function Calling with Gemini API
 
 1. In this notebook, we start the example by creating a SQLite database and adding some synthetic data which we can query.
@@ -126,3 +128,26 @@ By providing these functions to the Gemini model (LLM), it gains the ability to:
 ![image](https://github.com/user-attachments/assets/1796a855-0fda-480e-99df-860e241d044d)
 
 10. This way we can define nodes and edges of the graph to build our app. The LLM responses are used to navigate throughout the nodes to perform functions of the app and terminate based on user defined conditions.
+
+
+## Day-4
+
+### Whitepaper Summary
+
+### Notebook Summary
+
+#### Notebook 1 - Fine tuning a custom model
+
+1. In this notebook, we fine-tune an LLM to perform a classification task.
+ * Data: 20 Newsgroups Text Data
+ * Model: `gemini-1.5-flash-001`
+2. We only use 50 samples per class for fine-tuning. this Technique (parameter-efficient fine-tuning, or PEFT) updates a relatively small number of parameters and does not require training a new model or updating the large model.
+3. Before fine-tuning, we perform evaluation on existing models -
+ * Passing the text directly
+ * Different types of prompt engineering
+   We do not obtain desired results with this approach
+4. Tuning the model enables us to use the model without any prompts or system instructions and outputs succinct text from the classes you provide in the training data
+5. The data contains both input text (the processed posts) and output text (the category, or newsgroup), and we can configure the training using hyperparameters - epoch_count, batch_size, learning_rate
+6. We use `client.tunings.tune` API to create and run a tuning job and pass the configuration using `types.CreateTuningJobConfig` . client.tunings.tune uses input data in specific format - records as dictionaries with fields textInput and output
+7. Tuning jobs are queued and run in the backgroud. We set up a method to check if a fine-tuned models exists, if not then we use an existing model
+8. We calculate the model accuracy of the fine-tuned model. We see that it is more accurate than stock model. We also observe that token usage of the fine-tuned model is significantly less due to model given pre-defined classes as response instead of verbose response.
