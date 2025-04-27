@@ -130,7 +130,7 @@ By providing these functions to the Gemini model (LLM), it gains the ability to:
 10. This way we can define nodes and edges of the graph to build our app. The LLM responses are used to navigate throughout the nodes to perform functions of the app and terminate based on user defined conditions.
 
 
-## Day-4
+## Day-4: Domain-Specific LLMs
 
 ### Whitepaper Summary
 
@@ -151,3 +151,28 @@ By providing these functions to the Gemini model (LLM), it gains the ability to:
 6. We use `client.tunings.tune` API to create and run a tuning job and pass the configuration using `types.CreateTuningJobConfig` . client.tunings.tune uses input data in specific format - records as dictionaries with fields textInput and output
 7. Tuning jobs are queued and run in the backgroud. We set up a method to check if a fine-tuned models exists, if not then we use an existing model
 8. We calculate the model accuracy of the fine-tuned model. We see that it is more accurate than stock model. We also observe that token usage of the fine-tuned model is significantly less due to model given pre-defined classes as response instead of verbose response.
+
+#### Notebook 2 - Google Search Grounding
+
+1. In this notebook, we implement grounding with Google Search results in the Gemini API. Search grounding is similar to using the RAG system. The model generates Google Search queries and invokes the searches automatically, retrieving relevant data from Google's index of the web and providing links to search suggestions that support the query, so users can verify the sources.
+2. We can ask Gemini and ground it's answers using Google Search in the Google AI studio by enabling grounding under 'tools'
+3. To enable search grounding, we can specify it as a tool: `google_search`. Like other tools, this is supplied as a parameter in `GenerateContentConfig`, and can be passed to `generate_content` calls as well as `chats.create` (for all chat turns) or `chat.send_message` (for specific turns).
+4. When search grounding is used, the model returns extra metadata that includes links to search suggestions, supporting documents and information on how the supporting documents were used.
+5. The `grounding_supports` in the metadata provide a way for you to correlate the grounding chunks used to the generated output text. The API provides a text reference and confidence score to validate the grounding
+
+
+## Day-5: MLOps for Generative AI
+
+### Whitepaper Summary
+
+1. This whitepaper delves into the fundamental tenets of MLOps and the necessary adaptations required for the domain of gen AI and Foundation Models.
+2. We explore different offerings of Vertex AI, which are specifically tailored to address the unique demands of Gen AI based applications
+3. MLOps is an extension of the field of DevOps which handles the experimental nature of ML models through practices like - Data Validation, Model Evaluation, Model Monitoring, and Tracking & Reproducibility
+4. Lifecycle of Gen AI system -
+ * Discovery Phase - evaluating which model to use
+ * Development and Experimentation - Involves building system using different prompt emgineering methods, customization (PEFT) and techniques like model chaining etc.
+ * Data Engineering practices - Involves grounding the results using reliable sources, tuning the model etc.
+ * Deployment - Managing artifacts in the deployment process, including prompt templates, chain definitions, embedding models, retrieval data stores, and fine-tuned model adapters among others.
+ * Continuous monitoring in production - Ensures improved application performance and maintains safety standards through responsible AI techniques, such as ensuring fairness, transparency, and accountability in the model's outputs.
+ * Continuous Improvement - Tweaking these FMs through prompting techniques, swapping them out for newer versions, or even combining multiple models for enhanced performance, cost efficiency, or reduced latency.
+5. 
