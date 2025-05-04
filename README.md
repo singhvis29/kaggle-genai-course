@@ -116,6 +116,16 @@ This repository is created for notebooks and material used in the the Kaggle 5-d
 
 [Colab Notebook Link](https://colab.research.google.com/github/singhvis29/kaggle-genai-course/blob/main/Day_2_Classifying_embeddings_with_Keras.ipynb)
 
+1. The notebook demonstrates how to use pre-computed sentence embeddings to classify textual data using a simple neural network built with Keras.
+2. It uses a small movie review dataset, where the inputs are 512-dimensional sentence embeddings (extracted via a model like BERT) and the labels indicate sentiment (positive/negative).
+3. A sequential Keras model is built with:
+ * Dense(128, activation='relu')
+ * Dropout(0.5)
+ * Dense(1, activation='sigmoid')
+ * This is a simple feedforward classifier for binary classification.
+4. The model is compiled with binary cross-entropy loss and Adam optimizer, trained over 10 epochs, and evaluated using validation accuracy and loss plots.
+5. The model achieves good performance, demonstrating that pre-computed embeddings can be effectively used as input features for simple classifiers without fine-tuning the underlying embedding model.
+
 
 ## Day-3
 
