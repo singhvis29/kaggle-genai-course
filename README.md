@@ -21,6 +21,9 @@ This repository is created for notebooks and material used in the the Kaggle 5-d
 ### Notebook Summary
 
 #### Notebook 1 - Prompting
+
+[Colab Notebook Link](https://colab.research.google.com/github/singhvis29/kaggle-genai-course/blob/main/Day_1_Prompting.ipynb)
+
 1. LLM output can be obtained using Google's new google-genai python SDK.
 2. models.generate_content is an API which is used to obtain the LLM response. We can pass parameters like prompt, model name (e.g. - gemini-2.0-flash), configuration of response etc.).
 3. We can start a chat using chats.create API, this will create a multi-turn structure of the interation with LLM. We can also input a chat history when we initiate the chat to provide a context to the chat.
@@ -39,6 +42,9 @@ This repository is created for notebooks and material used in the the Kaggle 5-d
 
 
 #### Notebook 2 - Evaluation and Structures Response
+
+[Colab Notebook Link](https://colab.research.google.com/github/singhvis29/kaggle-genai-course/blob/main/Day_1_Evaluation_and_structured_output.ipynb)
+
 1. To evaluate an LLM response, we can evaluate a number of aspects, like how well the model followed the prompt ("instruction following"), whether it included relevant data in the prompt ("groundedness"), how easy the text is to read ("fluency"), or other factors like "verbosity" or "quality".
 2. In this notebook, we learn different types of LLM evaluation techniques
 3. In this notebook we evaluate the summarization task of an LLM, we can perform a verbose evaluation or a structure rating based evaluation.
