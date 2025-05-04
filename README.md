@@ -81,9 +81,42 @@ This repository is created for notebooks and material used in the the Kaggle 5-d
 
 ### Whitepaper Summary
 
+#### Whitepaper 1 - Agents
+
+1.  **Generative AI agents** are defined as applications that aim to achieve a goal by observing the world and acting upon it using available tools.
+2.  Just like humans use tools (books, Google Search, calculators) to supplement prior knowledge, **Generative AI models can be trained to use tools** to access real-time information or suggest real-world actions.
+3.  An agent invokes the concept of a program that **extends beyond the standalone capabilities of a Generative AI model** by combining reasoning, logic, and access to external information connected to the model.
+4.  Agents are **autonomous and can act independently** of human intervention, especially when given proper goals or objectives. They can also be proactive, reasoning about the next steps even without explicit instructions.
+5.  The inner workings of an agent are driven by foundational components that form a **cognitive architecture**, which can be configured in various ways.
+6.  The three essential components in an agent’s cognitive architecture are **the model, the tools, and the orchestration layer**.
+7.  **The model** is the language model (or multiple models) used as the **centralized decision maker** for agent processes. It should be capable of following instruction-based reasoning frameworks like ReAct, Chain-of-Thought, or Tree-of-Thoughts.
+8.  **Tools bridge the gap between foundational models and the outside world**, empowering agents to interact with external data and services, thus unlocking a wider range of actions. Tools align with common web API methods and can fetch data or update information.
+9.  **The orchestration layer** describes a **cyclical process** governing how an agent takes in information, performs internal reasoning, and uses that reasoning to inform its next action or decision. This loop continues until the agent reaches its goal.
+10. **Models are limited to their training data**, while **agents extend knowledge through connection with external systems via tools**. Models typically perform single inferences, while agents manage session history for multi-turn interactions.
+11. Models do not have native tool implementation or logic layers, while **agents have native cognitive architecture** that uses reasoning frameworks and natively implemented tools.
+12. The orchestration layer is responsible for maintaining **memory, state, reasoning, and planning**. It uses prompt engineering frameworks to guide these processes.
+13. Popular reasoning frameworks include **ReAct** (synergizes Reasoning and Acting), **Chain-of-Thought (CoT)** (enables reasoning through intermediate steps), and **Tree-of-Thoughts (ToT)** (generalizes CoT for exploration and strategic lookahead).
+14. **Tools** are the link between foundational models and the outside world, allowing agents to perform tasks with greater accuracy and reliability, such as adjusting smart home settings or fetching user information.
+15. As of the publication date, the three primary tool types Google models interact with are **Extensions, Functions, and Data Stores**.
+16. **Extensions** act as a **bridge between an API and an agent**, standardizing API execution regardless of underlying implementation. They teach the agent how to use an API endpoint using examples and specifying required arguments. Extensions are executed on the **agent-side**.
+17. **Functions** work similarly but the **model outputs a Function and its arguments without making a live API call**. Functions are executed on the **client-side**. This gives developers more granular control over data flow, especially for security, timing, or additional data transformation needs.
+18. **Data Stores** provide agents with access to **dynamic and up-to-date information** beyond their static training data, ensuring responses are grounded in factuality.
+19. Data Stores are typically implemented as a **vector database**. They allow developers to provide additional data in various formats (spreadsheets, PDFs, website content) without time-consuming transformations or retraining.
+20. A prolific example of Data Store usage is **Retrieval Augmented Generation (RAG)**, where the agent accesses data from the vector database to supplement its knowledge.
+21. **Model performance in tool selection** can be enhanced through targeted learning approaches like **in-context learning** (learning 'on the fly' with prompts and few-shot examples), **retrieval-based in-context learning** (dynamically populating prompts with relevant information from external memory/data stores), and **fine-tuning** (pre-training on larger datasets of specific examples).
+22. Libraries like **LangChain and LangGraph** allow users to build custom agents by chaining together sequences of logic, reasoning, and tool calls.
+23. Building production-grade agent applications often involves integrating core components with additional tools like UIs, evaluation frameworks, and continuous improvement mechanisms, simplified by platforms like **Google’s Vertex AI**.
+24. The future of agents involves advancements in tools and reasoning, enabling the solution of increasingly complex problems, including the concept of **'agent chaining'** or 'mixture of agent experts'.
+
+#### Whitepaper 2 - Agents Companion
+
+
+
 ### Notebook Summary
 
 #### Notebook 1 - Function Calling with Gemini API
+
+[Colab Notebook Link](https://colab.research.google.com/github/singhvis29/kaggle-genai-course/blob/main/Day_3_Function_calling_with_the_Gemini_API.ipynb)
 
 1. In this notebook, we start the example by creating a SQLite database and adding some synthetic data which we can query.
 2. Gemini API can interact with external functions by two approaches, which in this case are used to access and query a database -
@@ -114,6 +147,8 @@ By providing these functions to the Gemini model (LLM), it gains the ability to:
 
 
 #### Notebook 2 - Building an Agent with LangGraph
+
+[Colab Notebook Link](https://colab.research.google.com/github/singhvis29/kaggle-genai-course/blob/main/Day_3_Building_an_agent_with_LangGraph.ipynb)
 
 1. This notebook teaches us to build an agent using LangGraph. LangGraph applications are built around a **graph** structure. As the developer, you define an application graph that models the state transitions for your application. Your app will define a **state** schema, and an instance of that schema is propagated through the graph.
 2. 2.Each **node** in the graph represents an action or step that can be taken. Nodes will make changes to the state in some way through code that you define. These changes can be the result of invoking an LLM, by calling an API, or executing any logic that the node defines.
